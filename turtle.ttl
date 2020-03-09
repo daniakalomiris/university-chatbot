@@ -23,7 +23,8 @@ ex:Course
     ex:hasSubject xsd:string ;
     ex:hasNumber xsd:integer ;
     ex:hasDescription xsd:string ;
-    rdfs:seeAlso xsd:anyURI .
+    rdfs:seeAlso xsd:anyURI ;
+    ex:hasTopic ex:Topic .
 
 ex:Topic
     a rdfs:Class ;
