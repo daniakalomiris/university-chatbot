@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9b846448-02c1-4397-8fb8-9aa825113bb3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_data" beforeDir="false" afterPath="$PROJECT_DIR$/course_data" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/knowledge_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_base.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,7 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/comp_474$test.coverage" NAME="knowlegde_base Coverage Results" MODIFIED="1583792598188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/comp_474$test.coverage" NAME="knowlegde_base Coverage Results" MODIFIED="1583797007158" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-70693597">
@@ -34,32 +33,34 @@
           <entry key="png" value="4" />
           <entry key="py" value="2" />
           <entry key="rdf" value="1" />
+          <entry key="student_data" value="1" />
           <entry key="ttl" value="6" />
           <entry key="txt" value="7" />
           <entry key="university" value="1" />
-          <entry key="university_data" value="2" />
+          <entry key="university_data" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="1" />
           <entry key="Image" value="4" />
-          <entry key="PLAIN_TEXT" value="29" />
+          <entry key="PLAIN_TEXT" value="31" />
           <entry key="Python" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="17" />
-          <entry key="py" value="3612" />
+          <entry key="py" value="4251" />
           <entry key="rdf" value="189" />
+          <entry key="student_data" value="283" />
           <entry key="ttl" value="1024" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="1230" />
-          <entry key="Python" value="3612" />
+          <entry key="PLAIN_TEXT" value="1513" />
+          <entry key="Python" value="4251" />
         </counts>
       </usages-collector>
     </session>
@@ -69,8 +70,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/knowledge_base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="100" column="74" lean-forward="true" selection-start-line="100" selection-start-column="74" selection-end-line="100" selection-end-column="74" />
+            <state relative-caret-position="433">
+              <caret line="123" column="75" selection-start-line="123" selection-start-column="75" selection-end-line="123" selection-end-column="75" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
               </folding>
@@ -79,10 +80,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/student_data">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/course_data">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="3663" column="151" selection-start-line="3663" selection-start-column="151" selection-end-line="3663" selection-end-column="151" />
+            <state relative-caret-position="113">
+              <caret line="1170" selection-start-line="1170" selection-end-line="1170" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -108,8 +118,9 @@
       <find>hasto</find>
       <find>ex.topic</find>
       <find>&amp;nbsp;</find>
-      <find>exdata</find>
       <find>�</find>
+      <find>exdata</find>
+      <find>comp</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -130,6 +141,7 @@
         <option value="$PROJECT_DIR$/university" />
         <option value="$PROJECT_DIR$/course_data.csv" />
         <option value="$PROJECT_DIR$/course_data" />
+        <option value="$PROJECT_DIR$/student_data" />
         <option value="$PROJECT_DIR$/knowledge_base.py" />
       </list>
     </option>
@@ -317,13 +329,6 @@
     <entry file="file://$PROJECT_DIR$/course_data.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/university_data">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="65" selection-start-column="65" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/course_data.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -331,17 +336,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/university_data">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="59" selection-start-column="59" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/course_data">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="3663" column="151" selection-start-line="3663" selection-start-column="151" selection-end-line="3663" selection-end-column="151" />
+        <state relative-caret-position="113">
+          <caret line="1170" selection-start-line="1170" selection-end-line="1170" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/student_data">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/knowledge_base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="100" column="74" lean-forward="true" selection-start-line="100" selection-start-column="74" selection-end-line="100" selection-end-column="74" />
+        <state relative-caret-position="433">
+          <caret line="123" column="75" selection-start-line="123" selection-start-column="75" selection-end-line="123" selection-end-column="75" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
           </folding>

@@ -98,7 +98,7 @@ with open("course_data") as data:
     file = csv.reader(data, delimiter=',')
     for row in file:
         course = URIRef(exdata + row[0].replace(" ", "_")) # define course URI using first column
-        link = URIRef(row[3]) # define link URI to online source of course
+        link = URIRef(row[3]) # define link URI to online source of course using fourth column
 
         g.add( (course, RDF.type, ex.Course) )
         g.add( (course, FOAF.name, Literal(row[0])) )
@@ -107,6 +107,23 @@ with open("course_data") as data:
         g.add( (course, RDFS.seeAlso, link) )
 
 # processing student data into RDF triples
+with open("student_data") as data:
+    file = csv.reader(data, delimiter=',')
+    for row in file:
+        student = URIRef(exdata + row[0].replace(" ", "_")) # define student URI using first column
+        course = URIRef(exdata + row[3].replace(" ", "_")) # define course URI using fourth column
+
+        # only add student to graph if not already in graph
+        for s, p, o in g:
+            if not (student, RDF.type, ex.Student) in g:
+                g.add( (student, RDF.type, ex.Student) )
+                g.add( (student, FOAF.name, Literal(row[0])) )
+                g.add( (student, ex.hasID, Literal(row[1])) )
+                g.add( (student, FOAF.mbox, Literal(row[2])) )
+                g.add( (student, ex.hasCompleted, course) )
+                g.add( (ex.hasCompleted, ex.hasGrade, Literal(row[4])) ) # list index out of range
+            else:
+                g.add( (ex.hasCompleted, ex.hasGrade, Literal(row[4])) )
 
 for s, p, o in g:
     print( (s, p, o) )
