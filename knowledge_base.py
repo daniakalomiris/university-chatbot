@@ -123,6 +123,7 @@ with open("student_data") as data:
                 g.add( (student, ex.hasCompleted, course) )
                 g.add( (ex.hasCompleted, ex.hasGrade, Literal(row[4])) ) # list index out of range
             else:
+                g.add( (student, ex.hasCompleted, course) )
                 g.add( (ex.hasCompleted, ex.hasGrade, Literal(row[4])) )
 
 for s, p, o in g:
