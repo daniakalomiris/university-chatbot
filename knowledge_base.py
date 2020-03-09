@@ -86,8 +86,8 @@ g.add( (ex.hasGrade, RDFS.range, XSD.string ) )
 with open("university_data") as data:
     file = csv.reader(data, delimiter=',')
     for row in file:
-        university = URIRef(exdata + row[0].replace(" ", "_")) # define university_data URI using first column
-        link = URIRef(exdata + row[1]) # define link URI to university_data's entry in dbpedia using second column
+        university = URIRef(exdata + row[0].replace(" ", "_")) # define university URI using first column
+        link = URIRef(row[1]) # define link URI to university's entry in dbpedia using second column
 
         g.add( (university, RDF.type, ex.University) )
         g.add( (university, FOAF.name, Literal(row[0])) )
@@ -98,12 +98,13 @@ with open("course_data") as data:
     file = csv.reader(data, delimiter=',')
     for row in file:
         course = URIRef(exdata + row[0].replace(" ", "_")) # define course URI using first column
-
+        link = URIRef(row[3]) # define link URI to online source of course
 
         g.add( (course, RDF.type, ex.Course) )
         g.add( (course, FOAF.name, Literal(row[0])) )
         g.add( (course, ex.hasSubject, Literal(row[1])) )
-        g.add((course, ex.hasNumber, Literal(row[2])))
+        g.add( (course, ex.hasNumber, Literal(row[2])) )
+        g.add( (course, RDFS.seeAlso, link) )
 
 # processing student data into RDF triples
 
