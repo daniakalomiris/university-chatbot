@@ -1,0 +1,46 @@
+@prefix p: <http://example.org/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix wd: <http://www.wikidata.org/entity/>.
+@prefix db: <http://www.dbpedia.org/resource/>.
+@prefix schema: <http://schema.org/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix el: <http://example.org/elements/>.
+    
+
+p:University
+  a rdfs:Class ;
+  rdfs:subClassOf foaf:Organization;
+  rdfs:label "University"@en ;
+  rdfs:comment "An organization at which the students study".
+   
+p:Course
+  a rdfs:Class ;
+  rdfs:label "Course"@en ;
+  rdfs:comment "Course is part of study in university towards the granting of an approved degree".
+
+p:Topic
+  a rdfs:Class ;
+  rdfs:label "Topic"@en ;
+  rdfs:comment "Each topic is a part of course material".
+
+p:Student
+  a rdfs:Class ;
+  rdfs:subClassOf foaf:person;
+  rdfs:label "Course"@en ;
+  rdfs:comment "A person who studies at university".
+
+p:CompletedCourse
+  a rdfs:Class ;
+  rdfs:subClassOf p:Course;
+  rdfs:label "CompletedCourse"@en ;
+  rdfs:comment "Completed Course is a course that is finished by student and has a grade and complition date".
+
+p:hasCompleted
+  a rdf:Property ;
+  rdfs:label "hasCompleted"@en ;
+  rdfs:comment "Student has completed a course" ;
+  rdfs:domain p:Student;
+  rdfs:range p:CompletedCourse .

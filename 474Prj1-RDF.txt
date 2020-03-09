@@ -1,0 +1,46 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:p="http://example.org/"
+    xmlns:wd="http://www.wikidata.org/entity/"
+    xmlns:db="http://www.dbpedia.org/resource/"
+    xmlns:schema="http://schema.org/"
+    xmlns:el="http://example.org/elements/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" > 
+  <rdf:Description rdf:about="http://example.org/University">
+    <rdfs:comment>An organization at which the students study</rdfs:comment>
+    <rdfs:label xml:lang="en">University</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Student">
+    <rdfs:comment>A person who studies at university</rdfs:comment>
+    <rdfs:label xml:lang="en">Course</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/person"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/CompletedCourse">
+    <rdfs:comment>Completed Course is a course that is finished by student and has a grade and compeleting date</rdfs:comment>
+    <rdfs:label xml:lang="en">CompletedCourse</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/Course"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Topic">
+    <rdfs:comment>Each topic is a part of course material</rdfs:comment>
+    <rdfs:label xml:lang="en">Topic</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/hasCompleted">
+    <rdfs:range rdf:resource="http://example.org/CompletedCourse"/>
+    <rdfs:domain rdf:resource="http://example.org/Student"/>
+    <rdfs:comment>Student has completed a course</rdfs:comment>
+    <rdfs:label xml:lang="en">hasCompleted</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Course">
+    <rdfs:comment>Course is part of study in university towards the granting of an approved degree</rdfs:comment>
+    <rdfs:label xml:lang="en">Course</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+</rdf:RDF>
