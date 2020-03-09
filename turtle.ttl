@@ -19,18 +19,57 @@ p:University
 p:Course
     a rdfs:Class ;
     rdfs:label "Course"@en ;
-    rdfs:comment "Course is offered at a university towards the granting of an approved degree" .
+    rdfs:comment "Course is offered at a university towards the granting of an approved degree" ;
+    foaf:name xsd:string ;
+    p:hasSubject xsd:string ;
+    p:hasNumber xsd:integer ;
+    p:hasDescription xsd:string ;
+    rdfs:seeAlso xsd:anyURI .
 
 p:Topic
     a rdfs:Class ;
     rdfs:label "Topic"@en ;
-    rdfs:comment "Topic is part of a course material" .
+    rdfs:comment "Topic is part of a course material" ;
+    foaf:name xsd:string ;
+    rdfs:seeAlso xsd:anyURI .
 
 p:Student
     a rdfs:Class ;
     rdfs:subClassOf foaf:person ;
     rdfs:label "Student"@en ;
-    rdfs:comment "Person who studies at a university" .
+    rdfs:comment "Person who studies at a university" ;
+    foaf:name xsd:string ;
+    p:hasID xsd:integer ;
+    foaf:mbox xsd:string ;
+    p:hasCompleted p:Course .
+
+p:hasSubject
+    a rdf:Property ;
+    rdfs:label "hasSubject"@en ;
+    rdfs:comment "Course has a subject" ;
+    rdfs:domain p:Course ;
+    rdfs:range xsd:string .
+
+p:hasNumber
+    a rdf:Property ;
+    rdfs:label "hasNumber"@en ;
+    rdfs:comment "Course has a number" ;
+    rdfs:domain p:Course ;
+    rdfs:range xsd:integer .
+
+p:hasDescription
+    a rdf:Property ;
+    rdfs:label "hasDescription"@en ;
+    rdfs:comment "Course has a description" ;
+    rdfs:domain p:Course ;
+    rdfs:range xsd:string .
+
+p:hasID
+    a rdf:Property ;
+    rdfs:label "hasID"@en ;
+    rdfs:comment "Student has an ID number" ;
+    rdfs:domain p:Student ;
+    rdfs:range xsd:integer .
 
 p:hasTopic
     a rdf:Property ;
@@ -48,7 +87,7 @@ p:hasCompleted
 
 p:hasGrade
     a rdf:Property ;
-    rfds:subPropertyOf p:hasCompleted ;
+    rdfs:subPropertyOf p:hasCompleted ;
     rdfs:label "hasGrade"@en ;
     rdfs:comment "Student has a grade for a completed course" ;
     rdfs:domain p:hasCompleted ;
