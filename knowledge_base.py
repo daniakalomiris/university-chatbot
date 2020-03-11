@@ -3,12 +3,11 @@ from rdflib.namespace import FOAF, RDFS, XSD
 
 import csv
 
-g = Graph()
-
 # define namespaces
 ex = Namespace("http://example.org/")
 exdata = Namespace("http://example.org/data#")
 
+# create knowledge base
 g.add( (ex.University, RDF.type, RDFS.Class) )
 g.add( (ex.University, RDFS.subClassOf, FOAF.organization) )
 g.add( (ex.University, RDFS.label, Literal("University", lang="en")) )
@@ -81,9 +80,9 @@ g.add( (ex.hasGrade, RDFS.label, Literal("hasGrade", lang="en")) )
 g.add( (ex.hasGrade, RDFS.comment, Literal("Student has a grade for a completed course")) )
 g.add( (ex.hasGrade, RDFS.domain, ex.hasCompleted) )
 g.add( (ex.hasGrade, RDFS.range, XSD.string ) )
-#
-# # processing university_data data into RDF triples
-with open("university_data") as data:
+
+# processing university_data data into RDF triples
+with open("dataset/university_data") as data:
     file = csv.reader(data, delimiter=',')
     for row in file:
         university = URIRef(exdata + row[0].replace(" ", "_")) # define university URI using first column
@@ -94,7 +93,7 @@ with open("university_data") as data:
         g.add( (university, RDFS.seeAlso, link) )
 
 # processing course data into RDF triples
-with open("course_data") as data:
+with open("dataset/course_data") as data:
     file = csv.reader(data, delimiter=',')
     for row in file:
         course = URIRef(exdata + row[0].replace(" ", "_")) # define course URI using first column
@@ -107,7 +106,7 @@ with open("course_data") as data:
         g.add( (course, RDFS.seeAlso, link) )
 
 # processing student data into RDF triples
-with open("student_data") as data:
+with open("dataset/student_data") as data:
     file = csv.reader(data, delimiter=',')
     for row in file:
         student = URIRef(exdata + row[0].replace(" ", "_")) # define student URI using first column
@@ -120,11 +119,15 @@ with open("student_data") as data:
                 g.add( (student, FOAF.name, Literal(row[0])) )
                 g.add( (student, ex.hasID, Literal(row[1])) )
                 g.add( (student, FOAF.mbox, Literal(row[2])) )
-                g.add( (student, ex.hasCompleted, course) )
-                g.add( (ex.hasCompleted, ex.hasGrade, Literal(row[4])) ) # list index out of range
-            else:
-                g.add( (student, ex.hasCompleted, course) )
-                g.add( (ex.hasCompleted, ex.hasGrade, Literal(row[4])) )
 
-for s, p, o in g:
-    print( (s, p, o) )
+                if not (row[3] == ''):
+                    g.add( (student, ex.hasCompleted, course) )
+                if not (row[4] == ''):
+                    g.add( (ex.hasCompleted, ex.hasGrade, Literal(row[4])) )
+            else:
+                if not (row[3] == ''):
+                    g.add( (student, ex.hasCompleted, course) )
+                if not (row[4] == ''):
+                    g.add( (ex.hasCompleted, ex.hasGrade, Literal(row[4])) )
+
+print(g.serialize("knowledge_base.nt", format="nt")) # print graph in N-Triples format to knowledge_base.nt file
