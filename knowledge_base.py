@@ -3,9 +3,13 @@ from rdflib.namespace import FOAF, RDFS, XSD
 
 import csv
 
+import spotlight
+
 # define namespaces
 ex = Namespace("http://example.org/")
 exdata = Namespace("http://example.org/data#")
+
+g = Graph()
 
 # create knowledge base
 g.add( (ex.University, RDF.type, RDFS.Class) )
@@ -104,6 +108,31 @@ with open("dataset/course_data") as data:
         g.add( (course, ex.hasSubject, Literal(row[1])) )
         g.add( (course, ex.hasNumber, Literal(row[2])) )
         g.add( (course, RDFS.seeAlso, link) )
+
+        try:
+            # use dbpedia spotlight to find topics
+            topics = spotlight.annotate('http://model.dbpedia-spotlight.org/en/annotate',
+                                    row[0],
+                                    confidence=0.2, support=20)
+
+            # process topics of course into RDF triples
+            for topicRow in topics:
+                print(topicRow)
+                topic = URIRef(exdata + topicRow['surfaceForm'].replace(" ", "_")) # define topic URI using topic's surfaceForm from result
+                topicLink = URIRef(topicRow['URI']) # define link URI to dbpedia source of the topic
+
+                # only add topic to graph if not already in graph
+                for s, p, o in g:
+                    if not (topic, RDF.type, ex.Topic) in g:
+                        g.add( (topic, RDF.type, ex.Topic) )
+                        g.add( (topic, FOAF.name, Literal(topicRow['surfaceForm'])) )
+                        g.add( (topic, RDFS.seeAlso, topicLink) )
+
+                # add topic to this course
+                g.add( (course, ex.hasTopic, topic))
+        except:
+            print()
+
 
 # processing student data into RDF triples
 with open("dataset/student_data") as data:
