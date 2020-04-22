@@ -1,5 +1,0 @@
-(rdflib.term.Literal('10', datatype=rdflib.term.URIRef('http://www.w3.org/2001/XMLSchema#integer')),)
-
-(rdflib.term.Literal('3169', datatype=rdflib.term.URIRef('http://www.w3.org/2001/XMLSchema#integer')),)
-
-(rdflib.term.Literal('0', datatype=rdflib.term.URIRef('http://www.w3.org/2001/XMLSchema#integer')),)
