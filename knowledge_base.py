@@ -159,4 +159,6 @@ with open("dataset/student_data") as data:
                 if not (row[4] == ''):
                     g.add( (ex.hasCompleted, ex.hasGrade, Literal(row[4])) )
 
-print(g.serialize("knowledge_base.nt", format="nt")) # print graph in N-Triples format to knowledge_base.nt file
+# print graph in N-Triples format to knowledge_base.nt file
+# run this only once to populate the .nt file
+print(g.serialize("knowledge_base.nt", format="nt"))
