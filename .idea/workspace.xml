@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9b846448-02c1-4397-8fb8-9aa825113bb3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/knowledge_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/knowledge_base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/queries.py" afterDir="false" />
-    </list>
+    <list default="true" id="9b846448-02c1-4397-8fb8-9aa825113bb3" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +34,7 @@
           <entry key="course_data" value="8" />
           <entry key="courses" value="2" />
           <entry key="csv" value="8" />
+          <entry key="gitignore" value="1" />
           <entry key="html" value="1" />
           <entry key="knowledge_base" value="1" />
           <entry key="knowledge_base (N-Triples)" value="2" />
@@ -64,13 +61,14 @@
           <entry key="HTML" value="1" />
           <entry key="Image" value="7" />
           <entry key="Markdown" value="2" />
-          <entry key="PLAIN_TEXT" value="108" />
+          <entry key="PLAIN_TEXT" value="109" />
           <entry key="Python" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="23" />
+          <entry key="gitignore" value="8" />
           <entry key="py" value="8425" />
           <entry key="q2" value="36" />
           <entry key="q3" value="29" />
@@ -84,7 +82,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="1630" />
+          <entry key="PLAIN_TEXT" value="1638" />
           <entry key="Python" value="8425" />
         </counts>
       </usages-collector>
@@ -97,7 +95,7 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/queries.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="498">
@@ -105,6 +103,15 @@
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="6" selection-start-column="6" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -227,6 +234,7 @@
         <option value="$PROJECT_DIR$/chatbot.py" />
         <option value="$PROJECT_DIR$/knowledge_base.py" />
         <option value="$PROJECT_DIR$/queries.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -256,11 +264,6 @@
             <path>
               <item name="comp-474" type="b2602c69:ProjectViewProjectNode" />
               <item name="comp-474" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="comp-474" type="b2602c69:ProjectViewProjectNode" />
-              <item name="comp-474" type="462c0819:PsiDirectoryNode" />
-              <item name="dataset" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -418,12 +421,12 @@
     <frame x="674" y="23" width="1246" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14451827" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14451827" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32857144" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29533678" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.29533678" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -570,6 +573,13 @@
           <folding>
             <element signature="e#0#64#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
