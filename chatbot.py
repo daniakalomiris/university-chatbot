@@ -21,9 +21,6 @@ class eliza:
     return ' '.join(words)
 
   def respond(self,str):
-    # print(str) # returns question
-    # print(responses[0][0])
-
 
 
     for i in range(0, len(self.keys)):
@@ -35,7 +32,7 @@ class eliza:
 
         while pos > -1:
           num = int(resp[pos+1:pos+2])
-          queryResult = ''
+          result = ''
           if (re.search("[wW]hat is \w+\s\d+ about?", str)):
             subject = match.group(num).split()[0]
             number = match.group(num).split()[1]
@@ -51,12 +48,75 @@ class eliza:
 
             	}                                                                                    
             """, initBindings={'subject': Literal(subject), 'number': Literal(number)})
-            
             for row in res:
-              queryResult = row[0]
+              result = row[0]
+
+          if (re.search("[wW]hich courses did \w+\s\w+ take?", str)):
+            student = match.group(num)
+            res = g.query("""
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX ex: <http://example.org/>
+            PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+            SELECT DISTINCT ?subject ?number ?name
+                WHERE {
+                    ?student foaf:name ?studentName .
+                    ?student ex:hasCompleted ?course .
+                    ?course ex:hasSubject ?subject .
+                    ?course ex:hasNumber ?number .
+                    ?course foaf:name ?name .
+                    ex:hasCompleted ex:hasGrade ?grade
+                }
+            """, initBindings={'studentName': Literal(student)})
+            if not res:
+              result = student + ' did not take any courses!'
+            else:
+              for row in res:
+                result += row[0] + ' ' + row[1] + ' ' + row[2] + '\n'
+
+          if (re.search("[wW]hich courses cover \w+|w+\s\w+", str)):
+            topic = match.group(num)
+            res = g.query("""
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+            PREFIX ex: <http://example.org/>
+            SELECT ?subject ?number ?name
+                WHERE {
+                    ?course ex:hasSubject ?subject .
+                    ?course ex:hasNumber ?number .
+                    ?course foaf:name ?name .        
+                    ?course ex:hasTopic ?topic .
+                    ?topic foaf:name ?topicName
+            	}
+            """, initBindings={'topicName': Literal(topic)})
+            if not res:
+              result = 'There are no courses that cover ' + topic + '!'
+            else:
+              for row in res:
+                result += row[0] + ' ' + row[1] + ' ' + row[2] + '\n'
+
+          if (re.search("[wW]ho is familiar with \w+|w+\s\w+", str)):
+            topic = match.group(num)
+            res = g.query("""
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX ex: <http://example.org/>
+            PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+            SELECT ?name
+            	WHERE {
+            	    ?student ex:hasCompleted ?course .
+            	    ?student foaf:name ?name .
+            	    ?topic foaf:name ?topicName .
+            	    ?course ex:hasTopic ?topic
+            	}
+            """, initBindings={'topicName': Literal(topic)})
+            if not res:
+              result = 'There are no students that are familiar with ' + topic + '!'
+            else:
+              for row in res:
+                result += row[0] + '\n'
 
           resp = resp[:pos] + \
-            queryResult + \
+            result + \
             resp[pos+2:]
 
           pos = resp.find('%')
