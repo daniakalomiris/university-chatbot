@@ -1,6 +1,11 @@
-import string
+from rdflib import Graph, Literal, BNode, RDF, URIRef, Namespace
+
 import re
 import random
+
+# generate graph of knowledge base
+g = Graph()
+g.parse("knowledge_base.nt", format="nt")
 
 class eliza:
   def __init__(self):
@@ -16,27 +21,80 @@ class eliza:
     return ' '.join(words)
 
   def respond(self,str):
-    # find a match among keys
+    # print(str) # returns question
+    # print(responses[0][0])
+
+
+
     for i in range(0, len(self.keys)):
       match = self.keys[i].match(str)
+
       if match:
-        # found a match ... stuff with corresponding value
-        # chosen randomly from among the available options
         resp = random.choice(self.values[i])
-        # we've got a response... stuff in reflected text where indicated
         pos = resp.find('%')
+
         while pos > -1:
           num = int(resp[pos+1:pos+2])
+          queryResult = ''
+          if (re.search("[wW]hat is \w+\s\d+ about?", str)):
+            subject = match.group(num).split()[0]
+            number = match.group(num).split()[1]
+            res = g.query("""                                                                        
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>                                
+            PREFIX ex: <http://example.org/>                                                         
+            PREFIX foaf: <http://xmlns.com/foaf/0.1/>                                                
+            SELECT ?name                                                                             
+            	WHERE {                                                                              
+            	    ?course ex:hasSubject ?subject .                                                   
+            	    ?course ex:hasNumber ?number .                                                     
+            	    ?course foaf:name ?name                                                         
+
+            	}                                                                                    
+            """, initBindings={'subject': Literal(subject), 'number': Literal(number)})
+            
+            for row in res:
+              queryResult = row[0]
+
           resp = resp[:pos] + \
-            self.translate(match.group(num)) + \
+            queryResult + \
             resp[pos+2:]
+
           pos = resp.find('%')
-        # fix munged punctuation at the end
+
         if resp[-2:] == '?.': resp = resp[:-2] + '.'
         if resp[-2:] == '??': resp = resp[:-2] + '?'
         return resp
 
+reflections = {
+  "am"      : "are",
+  "was"     : "were",
+  "i"       : "you",
+  "i'd"     : "you would",
+  "i've"    : "you have",
+  "i'll"    : "you will",
+  "my"      : "your",
+  "are"     : "am",
+  "you've"  : "I have",
+  "you'll"  : "I will",
+  "your"    : "my",
+  "yours"   : "mine",
+  "you"     : "me",
+  "me"      : "you"
+}
+
 responses = [
+  [r'What is (.*) about?',
+  [  "%1"]],
+
+  [r'Which courses did (.*) take?',
+  [  "%1"]],
+
+  [r'Which courses cover (.*)?',
+  [  "%1"]],
+
+  [r'Who is familiar with (.*)?',
+  [  "%1"]],
+
   [r'quit',
   [  "Thank you for your questions.",
     "Goodbye!",
@@ -47,7 +105,7 @@ responses = [
     "Can you elaborate on that?",
     "I see. Do you have a question?",
     "Please ask questions about courses, students and topics."]]
-  ]
+]
 
 def command_interface():
   print('-' * 100)
@@ -61,7 +119,6 @@ def command_interface():
       s = input('> ')
     except EOFError:
       s = 'quit'
-    print(s)
     while s[-1] in '!.':
       s = s[:-1]
     print(chatbot.respond(s))

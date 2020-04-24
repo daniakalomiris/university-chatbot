@@ -1,4 +1,4 @@
-from rdflib import Graph, Literal, BNode, RDF, URIRef, Namespace
+from rdflib import Graph, Literal, RDF, URIRef, Namespace
 from rdflib.namespace import FOAF, RDFS, XSD
 
 import csv
