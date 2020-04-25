@@ -1,4 +1,4 @@
-from rdflib import Graph, Literal, BNode, RDF, URIRef, Namespace
+from rdflib import Graph, Literal
 
 import re
 import random
