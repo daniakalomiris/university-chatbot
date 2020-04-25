@@ -1,0 +1,2 @@
+SELECT (COUNT (*) as ?triples)
+WHERE {?s ?p ?o}

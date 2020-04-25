@@ -1,0 +1,6 @@
+(rdflib.term.Literal('Aerospace'),)
+(rdflib.term.Literal('Materials Engineering'),)
+(rdflib.term.Literal('Production'),)
+(rdflib.term.Literal('3D'),)
+(rdflib.term.Literal('Digital'),)
+(rdflib.term.Literal('General Chemistry'),)

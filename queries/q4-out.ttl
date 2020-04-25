@@ -1,0 +1,2 @@
+(rdflib.term.Literal('CLAS'), rdflib.term.Literal('321'), rdflib.term.Literal('Greek Epic Poetry'))
+(rdflib.term.Literal('ANTH'), rdflib.term.Literal('270'), rdflib.term.Literal('Anthropology and Contemporary Issues'))

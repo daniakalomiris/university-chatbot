@@ -21,8 +21,6 @@ class eliza:
     return ' '.join(words)
 
   def respond(self,str):
-
-
     for i in range(0, len(self.keys)):
       match = self.keys[i].match(str)
 
@@ -101,7 +99,7 @@ class eliza:
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX ex: <http://example.org/>
             PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-            SELECT ?name
+            SELECT DISTINCT ?name
             	WHERE {
             	    ?student ex:hasCompleted ?course .
             	    ?student foaf:name ?name .

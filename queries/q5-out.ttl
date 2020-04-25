@@ -1,0 +1,6 @@
+(rdflib.term.Literal('Vivek Rajhu'),)
+(rdflib.term.Literal('John Duricas'),)
+(rdflib.term.Literal('Maggie Chen'),)
+(rdflib.term.Literal('Laura Gonzalez'),)
+(rdflib.term.Literal('Victoria Chikanek'),)
+(rdflib.term.Literal('Jonathan Bart'),)

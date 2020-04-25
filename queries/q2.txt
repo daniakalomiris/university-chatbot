@@ -1,0 +1,20 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ex: <http://example.org/>
+SELECT (COUNT(?student) as ?count)
+WHERE {
+	?student rdf:type ex:Student
+}
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ex: <http://example.org/>
+SELECT (COUNT(?course) as ?count)
+WHERE {
+    ?course rdf:type ex:Course
+}
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ex: <http://example.org/>
+SELECT (COUNT(?topic) as ?count)
+WHERE {
+    ?topic rdf:type ex:Topic
+}

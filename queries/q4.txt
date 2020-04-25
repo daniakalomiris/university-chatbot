@@ -1,0 +1,12 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ex: <http://example.org/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+SELECT DISTINCT ?subject ?number ?name
+WHERE {
+    ?student foaf:name "Dania Kalomiris" .
+    ?student ex:hasCompleted ?course .
+    ?course ex:hasSubject ?subject .
+    ?course ex:hasNumber ?number .
+    ?course foaf:name ?name .
+    ex:hasCompleted ex:hasGrade ?grade
+}

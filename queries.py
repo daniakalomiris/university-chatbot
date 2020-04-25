@@ -3,7 +3,6 @@ from rdflib import Graph, Literal
 g = Graph()
 g.parse("knowledge_base.nt", format="nt")
 
-
 # returns total number of triples in the knowledge base
 res = g.query("""
 SELECT (COUNT(*) as ?triples)
@@ -14,7 +13,7 @@ SELECT (COUNT(*) as ?triples)
 for row in res:
     print("Total number of triples in the knowledge base: " + row[0])
 
-# returns total number of students
+# # returns total number of students
 res = g.query("""
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX ex: <http://example.org/>
@@ -23,6 +22,7 @@ SELECT (COUNT(?student) as ?count)
         ?student rdf:type ex:Student
     }
 """)
+
 for row in res:
     print("Total number of students: " + row[0])
 
@@ -35,10 +35,11 @@ SELECT (COUNT(?course) as ?count)
 	    ?course rdf:type ex:Course
 	}
 """)
+
 for row in res:
     print("Total number of courses: " + row[0])
 
-# returns total number of topics
+#returns total number of topics
 res = g.query("""
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX ex: <http://example.org/>
@@ -84,7 +85,6 @@ SELECT DISTINCT ?subject ?number ?name
 """)
 for row in res:
     print(row[0] + ' ' + row[1] + ' ' + row[2])
-#
 
 # returns list of all students familiar with a given topic
 res = g.query("""
@@ -102,12 +102,12 @@ SELECT ?name
 for row in res:
     print(row[0])
 
-# returns list of all topics a given student is familiar with
+# # returns list of all topics a given student is familiar with
 res = g.query("""
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX ex: <http://example.org/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-SELECT ?name
+SELECT DISTINCT ?name
 	WHERE {
 	    ?student ex:hasCompleted ?course .
  	    ?student foaf:name "Victoria Chikanek" .
