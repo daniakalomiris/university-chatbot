@@ -174,7 +174,7 @@ def command_interface():
   chatbot = eliza();
   while s != 'quit':
     try:
-      s = input('> ')
+      s = raw_input('> ')
     except EOFError:
       s = 'quit'
     while s[-1] in '!.':
