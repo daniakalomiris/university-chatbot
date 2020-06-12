@@ -8,7 +8,7 @@ University Chatbot is an intelligent agent written in Python and modeked after t
 
 ## Installation
 
-Install the package installer [pip](https://pip.pypa.io/en/stable/). If you installed Python through [Homebrew](https://brew.sh/), then *pip* should already be installed on your system. Next, navigate to the root folder of the proejct and install the required packages.
+Install the package installer [pip](https://pip.pypa.io/en/stable/). If you installed Python through [Homebrew](https://brew.sh/), then *pip* should already be installed on your system. Next, navigate to the root folder of the project and install the required packages.
 
     $ pip install rdflib
     $ pip install requests
