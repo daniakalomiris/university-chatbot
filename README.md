@@ -1,6 +1,6 @@
 # University Chatbot
 
-University Chatbot is an intelligent agent written in Python and modeked after the ELIZA program that can answer university-related questions for Concordia University using a knowledge graph and natural language processing.
+University Chatbot is an intelligent agent written in Python and modeled after the ELIZA program that can answer university-related questions for Concordia University using a knowledge graph and natural language processing.
 
 ## Requirements
 
@@ -16,7 +16,7 @@ Install the package installer [pip](https://pip.pypa.io/en/stable/). If you inst
 
 ## Getting started
 
-Once the package is installed, run the following command to start the chatbot.
+Once the packages are installed, run the following command to start the chatbot.
 
     $ python chatbot.py
 
